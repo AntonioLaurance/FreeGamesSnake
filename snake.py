@@ -1,3 +1,14 @@
+"""
+Paint: Juego clásico de la serpiente.
+
+Autores:
+Programador 1: Moisés Adame Aguilar (A01660927)
+Programador 2: Ricardo Campos Luna  (A01656898)
+Programador 3:
+
+Fecha: 9 de Mayo del 2022
+"""
+
 from turtle import *
 from random import randrange
 from freegames import square, vector
