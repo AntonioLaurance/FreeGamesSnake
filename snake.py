@@ -1,3 +1,20 @@
+"""
+Snake: Juego clásico de la serpiente. Este juego es un antecedente del famoso juego del  
+gusano llamado 'slither.io', este juego trata de una serpiente (los pixeles negros) que
+comen a los pixeles verdes y cada vez que come un pixel verde, la serpiente es un pixel 
+más grande. Los movimientos de la serpiente se dan a través de las teclas de flechas y se 
+pierde si se tocan los bordes de la pantalla de inicio definida o si se pulsa la tecla 
+opuesta a la dirección a la que va esta serpiente (siempre que la longitud de la serpiente
+sea mayor a 1).
+
+Autores:
+Programador 1: Moisés Adame Aguilar         (A01660927)
+Programador 2: Ricardo Campos Luna          (A01656898)
+Programador 3: Humberto Ivan Ulloa Cardona  (A01657143)
+
+Fecha: 10 de Mayo del 2022
+"""
+
 from turtle import *
 from random import randrange
 from freegames import square, vector
@@ -42,6 +59,11 @@ def move():
     square(food.x, food.y, 9, 'green')
     update()
     ontimer(move, 100)
+
+def move_food():
+    food.x = randrange(food.x - 1, food.x + 1)
+    food.y = randrange(food.y - 1, food.y + 1)
+    update()
 
 setup(420, 420, 370, 0)
 hideturtle()
