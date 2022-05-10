@@ -1,5 +1,4 @@
 """
-<<<<<<< HEAD
 Snake: Juego clásico de la serpiente. Este juego es un antecedente del famoso juego del  
 gusano llamado 'slither.io', este juego trata de una serpiente (los pixeles negros) que
 comen a los pixeles verdes y cada vez que come un pixel verde, la serpiente es un pixel 
@@ -7,9 +6,6 @@ más grande. Los movimientos de la serpiente se dan a través de las teclas de f
 pierde si se tocan los bordes de la pantalla de inicio definida o si se pulsa la tecla 
 opuesta a la dirección a la que va esta serpiente (siempre que la longitud de la serpiente
 sea mayor a 1).
-=======
-Paint: Juego clásico de la serpiente.
->>>>>>> bcb18228db6e53f302e9a5d342386329d4d7867e
 
 Autores:
 Programador 1: Moisés Adame Aguilar         (A01660927)
@@ -20,12 +16,18 @@ Fecha: 10 de Mayo del 2022
 """
 
 from turtle import *
-from random import randrange
+from random import choice, randrange
 from freegames import square, vector
 
 food = vector(0, 0)
 snake = [vector(10, 0)]
 aim = vector(0, -10)
+
+colors = ["purple", "green", "blue", "pink", "orange"]
+color_elegido_snake = choice(colors)
+colors.remove(color_elegido_snake)
+color_elegido_food = choice(colors)
+
 
 def change(x, y):
     "Change snake direction."
@@ -74,10 +76,12 @@ def move():
     if inside(food)==False:
         food.x= 0
         food.y= 0
-    square(food.x, food.y, 9, 'green')
+    square(body.x, body.y, 9, color_elegido_snake)
     update()
     ontimer(move, 100)
 
+
+ 
 
 setup(420, 420, 370, 0)
 hideturtle()
@@ -88,5 +92,6 @@ onkey(lambda: change(-10, 0), 'Left')
 onkey(lambda: change(0, 10), 'Up')
 onkey(lambda: change(0, -10), 'Down')
 move()
+# move_food()
 done()
 
