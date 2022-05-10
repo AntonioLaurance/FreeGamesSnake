@@ -16,12 +16,14 @@ Fecha: 10 de Mayo del 2022
 """
 
 from turtle import *
-from random import randrange
+from random import choice, randrange
 from freegames import square, vector
 
 food = vector(0, 0)
 snake = [vector(10, 0)]
 aim = vector(0, -10)
+colors = ["purple", "green", "blue", "pink", "orange"]
+color_elegido = choice(colors)
 
 def change(x, y):
     "Change snake direction."
@@ -54,17 +56,42 @@ def move():
     clear()
 
     for body in snake:
-        square(body.x, body.y, 9, 'black')
+        square(body.x, body.y, 9, color_elegido)
 
+    # ¿Qué pasaria si le sumo a la x de la comida 10 pixeles?
+    # food.x += 10
     square(food.x, food.y, 9, 'green')
     update()
     ontimer(move, 100)
 
 def move_food():
-    food.x = randrange(-15, 15) * 5
-    food.y = randrange(-15, 15) * 5
+    op = randrange(1, 4)
+
+    if op == 1:
+        food.y += 10
+    elif op == 2:
+        food.y -= 10
+    elif op == 3:
+        food.x += 10
+    elif op == 4:
+        food.x -= 10
+
+       
+    if food.x >= -200:
+        food.x += 20
+    elif food.x <= -190:
+        food.x -= 20
+    elif food.y <= -200:
+        food.y += 20
+    elif food.y <= 190:
+        food.y -= 20
+
+    new_vector = vector(food.x, food.y)
+
+    food.move(new_vector)
+    # square(food.x, food.y, 9, 'green')
     update()
-    ontimer(move_food, 2000)
+    ontimer(move_food, 100)
 
 setup(420, 420, 370, 0)
 hideturtle()
@@ -75,6 +102,6 @@ onkey(lambda: change(-10, 0), 'Left')
 onkey(lambda: change(0, 10), 'Up')
 onkey(lambda: change(0, -10), 'Down')
 move()
-move_food()
+# move_food()
 done()
 
