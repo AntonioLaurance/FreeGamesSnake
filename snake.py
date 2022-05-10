@@ -6,7 +6,7 @@ Programador 1: Moisés Adame Aguilar         (A01660927)
 Programador 2: Ricardo Campos Luna          (A01656898)
 Programador 3: Humberto Ivan Ulloa Cardona  (A01657143)
 
-Fecha: 9 de Mayo del 2022
+Fecha: 10 de Mayo del 2022
 """
 
 from turtle import *
