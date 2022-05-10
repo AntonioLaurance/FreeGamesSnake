@@ -60,42 +60,28 @@ def move():
     clear()
 
     for body in snake:
-        square(body.x, body.y, 9, color_elegido_snake)
-
-    # ¿Qué pasaria si le sumo a la x de la comida 10 pixeles?
-    # food.x += 10
-    square(food.x, food.y, 9, color_elegido_food)
+        square(body.x, body.y, 9, 'black')
+    """Aqui la variable op esta eligiendo en un rango de 1 a 4 para las direcciones a las que se va a mover la comida"""
+    op = randrange(1,5)
+    """con estos if, lo que hacemos es sumar a los vectores segun la direccion elegida previamente"""
+    if op==1:
+        food.x = food.x +10 #Mueve a la derecha
+    elif op==2:
+        food.x = food.x -10 #Mueve a las izquierda
+    elif op==3:
+        food.y = food.y +10 #Mueve hacia arriba
+    elif op==4:
+        food.y = food.y -10 #Mueve hacia abajo
+    """Este if utiliza la funcion ya creada que comprueba que la serpiente este dentro del mundo y si se sale resetea la posicion en 0,0"""
+    if inside(food)==False:
+        food.x= 0
+        food.y= 0
+    square(body.x, body.y, 9, color_elegido_snake)
     update()
     ontimer(move, 100)
 
-def move_food():
-    op = randrange(1, 4)
 
-    if op == 1:
-        food.y += 10
-    elif op == 2:
-        food.y -= 10
-    elif op == 3:
-        food.x += 10
-    elif op == 4:
-        food.x -= 10
-
-       
-    if food.x >= -200:
-        food.x += 20
-    elif food.x <= -190:
-        food.x -= 20
-    elif food.y <= -200:
-        food.y += 20
-    elif food.y <= 190:
-        food.y -= 20
-
-    new_vector = vector(food.x, food.y)
-
-    food.move(new_vector)
-    # square(food.x, food.y, 9, 'green')
-    update()
-    ontimer(move_food, 100)
+ 
 
 setup(420, 420, 370, 0)
 hideturtle()
