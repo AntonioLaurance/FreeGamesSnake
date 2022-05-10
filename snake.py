@@ -22,8 +22,12 @@ from freegames import square, vector
 food = vector(0, 0)
 snake = [vector(10, 0)]
 aim = vector(0, -10)
+
 colors = ["purple", "green", "blue", "pink", "orange"]
-color_elegido = choice(colors)
+color_elegido_snake = choice(colors)
+colors.remove(color_elegido_snake)
+color_elegido_food = choice(colors)
+
 
 def change(x, y):
     "Change snake direction."
@@ -56,11 +60,11 @@ def move():
     clear()
 
     for body in snake:
-        square(body.x, body.y, 9, color_elegido)
+        square(body.x, body.y, 9, color_elegido_snake)
 
     # ¿Qué pasaria si le sumo a la x de la comida 10 pixeles?
     # food.x += 10
-    square(food.x, food.y, 9, 'green')
+    square(food.x, food.y, 9, color_elegido_food)
     update()
     ontimer(move, 100)
 
