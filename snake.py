@@ -11,7 +11,6 @@ Autores:
 Programador 1: Moisés Adame Aguilar         (A01660927)
 Programador 2: Ricardo Campos Luna          (A01656898)
 Programador 3: Humberto Ivan Ulloa Cardona  (A01657143)
-
 Fecha: 10 de Mayo del 2022
 """
 
@@ -27,7 +26,6 @@ colors = ["purple", "green", "blue", "pink", "orange"]
 color_elegido_snake = choice(colors)
 colors.remove(color_elegido_snake)
 color_elegido_food = choice(colors)
-
 
 def change(x, y):
     "Change snake direction."
@@ -60,7 +58,7 @@ def move():
     clear()
 
     for body in snake:
-        square(body.x, body.y, 9, 'black')
+        square(body.x, body.y, 9, color_elegido_snake)
     """Aqui la variable op esta eligiendo en un rango de 1 a 4 para las direcciones a las que se va a mover la comida"""
     op = randrange(1,5)
     """con estos if, lo que hacemos es sumar a los vectores segun la direccion elegida previamente"""
@@ -76,12 +74,10 @@ def move():
     if inside(food)==False:
         food.x= 0
         food.y= 0
-    square(body.x, body.y, 9, color_elegido_snake)
+    square(food.x, food.y, 9, color_elegido_food)
     update()
     ontimer(move, 100)
 
-
- 
 
 setup(420, 420, 370, 0)
 hideturtle()
@@ -92,6 +88,4 @@ onkey(lambda: change(-10, 0), 'Left')
 onkey(lambda: change(0, 10), 'Up')
 onkey(lambda: change(0, -10), 'Down')
 move()
-move_food()
 done()
-
