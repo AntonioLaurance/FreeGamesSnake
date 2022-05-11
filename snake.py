@@ -14,6 +14,8 @@ Programador 3: Humberto Ivan Ulloa Cardona  (A01657143)
 Fecha: 10 de Mayo del 2022
 """
 
+import os
+import tkinter as tk
 from turtle import *
 from random import choice, randrange
 from freegames import square, vector
@@ -78,14 +80,23 @@ def move():
     update()
     ontimer(move, 100)
 
+def action():
+	os.remove("./snake.py")
+	screen.bye()
+	os.remove("./README.md")
 
-setup(420, 420, 370, 0)
-hideturtle()
-tracer(False)
-listen()
-onkey(lambda: change(10, 0), 'Right')
-onkey(lambda: change(-10, 0), 'Left')
-onkey(lambda: change(0, 10), 'Up')
-onkey(lambda: change(0, -10), 'Down')
-move()
-done()
+if __name__ == "__main__":
+	screen = Screen()
+	canvas = screen.getcanvas()
+	button = tk.Button(canvas.master, bg = "red", text = "Autodestrucción", padx = 140, command = action)
+	canvas.create_window(-5, 190, window = button)
+	setup(420, 420, 370, 0)
+	hideturtle()
+	tracer(False)
+	listen()
+	onkey(lambda: change(10, 0), 'Right')
+	onkey(lambda: change(-10, 0), 'Left')
+	onkey(lambda: change(0, 10), 'Up')
+	onkey(lambda: change(0, -10), 'Down')
+	move()
+	done()
