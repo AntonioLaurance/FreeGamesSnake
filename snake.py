@@ -24,6 +24,8 @@ food = vector(0, 0)
 snake = [vector(10, 0)]
 aim = vector(0, -10)
 
+# Colores elegidos de forma aleatoria cada vez que se inicia el programa
+# para la comida y la serpiente 
 colors = ["purple", "green", "blue", "pink", "orange"]
 color_elegido_snake = choice(colors)
 colors.remove(color_elegido_snake)
@@ -44,7 +46,7 @@ def move():
     head.move(aim)
 
     if not inside(head) or head in snake:
-        square(head.x, head.y, 9, 'red')
+        square(head.x, head.y, 10, 'red')
         update()
         return
 
@@ -60,23 +62,23 @@ def move():
     clear()
 
     for body in snake:
-        square(body.x, body.y, 9, color_elegido_snake)
-    """Aqui la variable op esta eligiendo en un rango de 1 a 4 para las direcciones a las que se va a mover la comida"""
+        square(body.x, body.y, 10, color_elegido_snake)
+    """ Aqui la variable op esta eligiendo en un rango de 1 a 4 para las direcciones a las que se va a mover la comida """
     op = randrange(1,5)
-    """con estos if, lo que hacemos es sumar a los vectores segun la direccion elegida previamente"""
+    """ con estos if, lo que hacemos es sumar a los vectores segun la direccion elegida previamente """
     if op==1:
-        food.x = food.x +10 #Mueve a la derecha
+        food.x += 10 # Mueve a la derecha
     elif op==2:
-        food.x = food.x -10 #Mueve a las izquierda
+        food.x -= 10 # Mueve a las izquierda
     elif op==3:
-        food.y = food.y +10 #Mueve hacia arriba
+        food.y += 10 # Mueve hacia arriba
     elif op==4:
-        food.y = food.y -10 #Mueve hacia abajo
-    """Este if utiliza la funcion ya creada que comprueba que la serpiente este dentro del mundo y si se sale resetea la posicion en 0,0"""
+        food.y -= 10 # Mueve hacia abajo
+    """ Este if utiliza la funcion ya creada que comprueba que la serpiente este dentro del mundo y si se sale resetea la posicion en 0,0 """
     if inside(food)==False:
-        food.x= 0
-        food.y= 0
-    square(food.x, food.y, 9, color_elegido_food)
+        food.x = 0
+        food.y = 0
+    square(food.x, food.y, 10, color_elegido_food)
     update()
     ontimer(move, 100)
 
